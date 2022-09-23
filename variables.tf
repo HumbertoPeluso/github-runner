@@ -14,7 +14,8 @@ variable "aws_ec2_instance_type" {
   type        = string
   # .medium only has 4GB RAM. Consider .large or .xlarge for more.
   # GitHub-hosted runners would be similar to t3a.large (8GB RAM)
-  default     = "t3a.medium" #.0113 spot hourly, $8.25 spot monthly
+  default     = "t2.micro"
+  #default     = "t3a.medium" #.0113 spot hourly, $8.25 spot monthly
   # default     = "t4g.medium" #.01 spot hourly, $7.37 spot monthly
 
 }
@@ -34,7 +35,7 @@ variable "aws_ec2_key_name" {
 variable "aws_security_groups" {
   description = "A list of one or more existing Security Groups to place the instances in"
   type        = list(string)
-  default     = ["sg-0f0f0f0f0f0f0f0f"]
+  default     = ["sg-0b6143c5a666ff47e"]
 }
 
 # currently these two values have to be the same. auto-scaling isn't supported yet.
@@ -42,13 +43,13 @@ variable "aws_security_groups" {
 variable "aws_asg_min_size" {
   description = "Minimum size of the Auto Scaling Group"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "aws_asg_max_size" {
   description = "Maximum size of the Auto Scaling Group"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "aws_access_key" {
